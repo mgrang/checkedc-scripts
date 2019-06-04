@@ -57,4 +57,5 @@ mkdir -p $BUILD_DIR/llvm
 
 cd $BUILD_DIR/llvm && cmake -G Ninja -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DCMAKE_BUILD_TYPE=$BUILD_MODE -DLLVM_ENABLE_ASSERTIONS:BOOL=$ASSERTION_MODE -DLLVM_TARGETS_TO_BUILD="$TARGETS_TO_BUILD" -DLLVM_CCACHE_BUILD:BOOL=ON $SRC_DIR/llvm || check_status
 
-ninja -j12 || check_status
+ninja -j16 || check_status
+ninja install || check_status
