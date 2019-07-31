@@ -27,7 +27,7 @@ mkdir -p $SRC_DIR && cd $SRC_DIR &&
 git clone https://github.com/Microsoft/checkedc-llvm llvm &&
 
 #checkout clang
-cd $SRC_DIR/tools
+cd $SRC_DIR/llvm/tools
 git clone https://github.com/Microsoft/checkedc-clang clang &&
 
 #checkout checkedc

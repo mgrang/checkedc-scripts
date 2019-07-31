@@ -55,12 +55,13 @@ done
 mkdir -p $BUILD_DIR/llvm && cd $BUILD_DIR/llvm
 
 cmake -G Ninja \
+ -DCHECKEDC_ARM_SYSROOT="/usr/local/magrang/sysroot/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf" \
+ -DCHECKEDC_ARM_RUNUNDER="qemu-arm" \
  -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR \
  -DCMAKE_BUILD_TYPE=$BUILD_MODE \
  -DLLVM_ENABLE_ASSERTIONS=ON \
  -DLLVM_TARGETS_TO_BUILD="$TARGETS_TO_BUILD" \
  -DLLVM_CCACHE_BUILD=ON \
- -DLLVM_CCACHE_SIZE="15GB" \
  -DLLVM_LIT_ARGS=-v \
  $SRC_DIR/llvm || check_status
 
