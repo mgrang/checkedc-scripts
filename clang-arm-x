@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TRIPLE=arm-linux-gnueabihf
+GCC=/usr/local/magrang/sysroot/gcc-arm-8.3-2019.03-x86_64-$TRIPLE
+
+clang \
+  -target $TRIPLE \
+  -march=armv7-a \
+  --sysroot=$GCC/$TRIPLE/libc \
+  --gcc-toolchain=$GCC \
+  "$@"
