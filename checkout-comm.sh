@@ -10,8 +10,6 @@ usage() {
   exit 1
 }
 
-SRC_DIR=$PWD/src
-
 for arg
 do
   case $arg in
@@ -21,9 +19,5 @@ do
   esac
 done
 
-mkdir -p $SRC_DIR && cd $SRC_DIR &&
-
 #checkout llvm-project
 git clone https://github.com/llvm/llvm-project.git src
-
-cd $SRC_DIR

@@ -10,8 +10,6 @@ usage() {
   exit 1
 }
 
-SRC_DIR=$PWD/src
-
 for arg
 do
   case $arg in
@@ -21,17 +19,13 @@ do
   esac
 done
 
-mkdir -p $SRC_DIR && cd $SRC_DIR &&
+CURDIR=$PWD
 
 #checkout llvm
-git clone https://github.com/Microsoft/checkedc-llvm llvm &&
-
-#checkout clang
-cd $SRC_DIR/llvm/tools
-git clone https://github.com/Microsoft/checkedc-clang clang &&
+git clone https://github.com/Microsoft/checkedc-clang src &&
 
 #checkout checkedc
-cd $SRC_DIR/llvm/projects/checkedc-wrapper &&
+cd src/llvm/projects/checkedc-wrapper &&
 git clone https://github.com/Microsoft/checkedc &&
 
-cd $SRC_DIR
+cd $CURDIR

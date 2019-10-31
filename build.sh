@@ -55,6 +55,7 @@ done
 mkdir -p $BUILD_DIR/llvm && cd $BUILD_DIR/llvm
 
 cmake -G Ninja \
+ -DLLVM_ENABLE_PROJECTS=clang \
  -DCHECKEDC_ARM_SYSROOT="/usr/local/checkedc/sysroots/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf" \
  -DCHECKEDC_ARM_RUNUNDER="qemu-arm" \
  -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR \
