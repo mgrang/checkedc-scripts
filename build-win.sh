@@ -30,4 +30,8 @@ cmake -A x64 -Thost=x64 \
 # In cmd prompt:
 cd c:\mgrang\checkedc\build
 "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" LLVM.sln /p:CL_MPCount=3 /p:Configuration=Release /m
+
+# To rebuild:
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" LLVM.sln /p:CL_MPCount=3 /p:Configuration=Release /m /t:rebuild
+
 #"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" LLVM.sln -maxcpucount:8 2>&1 | tee build.log
