@@ -14,7 +14,7 @@ cmake -A Win32 \
 -DLLVM_INSTALL_TOOLCHAIN_ONLY=ON \
 -DLLVM_USE_CRT_RELEASE=MT \
 -DCMAKE_BUILD_TYPE=Release \
-/c/mgrang/checkedc/master/src/llvm 2>&1 | tee config.log
+/c/mgrang/checkedc/src/llvm 2>&1 | tee config.log
 
 # To build X86-64 toolchain.
 cmake -A x64 -Thost=x64 \
@@ -25,7 +25,7 @@ cmake -A x64 -Thost=x64 \
 -DLLVM_INSTALL_TOOLCHAIN_ONLY=ON \
 -DLLVM_USE_CRT_RELEASE=MT \
 -DCMAKE_BUILD_TYPE=Release \
-/c/mgrang/checkedc/master/src/llvm 2>&1 | tee config.log
+/c/mgrang/checkedc/src/llvm 2>&1 | tee config.log
 
 # In cmd prompt:
 cd c:\mgrang\checkedc\build
