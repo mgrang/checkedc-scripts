@@ -1,9 +1,8 @@
 # In git-bash:
-cd /c/mgrang/checkedc
+cd /c/mgrang/checkedc/master
 git clone -c core.autocrlf=false https://github.com/Microsoft/checkedc-clang src
 cd src\llvm\projects
 git clone https://github.com/Microsoft/checkedc
-cd /c/mgrang/checkedc
 
 # In cmd prompt:
 set TOP=C:\mgrang\checkedc\master
