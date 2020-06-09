@@ -5,33 +5,11 @@ cd src\llvm\projects
 git clone https://github.com/Microsoft/checkedc
 cd /c/mgrang/checkedc
 
-# To build X86 toolchain.
-cmake -A Win32 \
--G "Visual Studio 16 2019" \
--DLLVM_ENABLE_PROJECTS=clang \
--DLLVM_TARGETS_TO_BUILD="X86;ARM" \
--DLLVM_ENABLE_ASSERTIONS=ON \
--DLLVM_INSTALL_TOOLCHAIN_ONLY=ON \
--DLLVM_USE_CRT_RELEASE=MT \
--DCMAKE_BUILD_TYPE=Release \
-/c/mgrang/checkedc/src/llvm 2>&1 | tee config.log
-
-# To build X86-64 toolchain.
-cmake -A x64 -Thost=x64 \
--G "Visual Studio 16 2019" \
--DLLVM_ENABLE_PROJECTS=clang \
--DLLVM_TARGETS_TO_BUILD=all \
--DLLVM_ENABLE_ASSERTIONS=ON \
--DLLVM_INSTALL_TOOLCHAIN_ONLY=ON \
--DLLVM_USE_CRT_RELEASE=MT \
--DCMAKE_BUILD_TYPE=Release \
-/c/mgrang/checkedc/src/llvm 2>&1 | tee config.log
-
 # In cmd prompt:
-cd c:\mgrang\checkedc\build
-"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" LLVM.sln /p:CL_MPCount=3 /p:Configuration=Release /m
-
-# To rebuild:
-"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" LLVM.sln /p:CL_MPCount=3 /p:Configuration=Release /m /t:rebuild
-
-#"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" LLVM.sln -maxcpucount:8 2>&1 | tee build.log
+set TOP=C:\mgrang\checkedc\master
+mkdir %TOP%\build
+cd %TOP%\build
+set PATH="C:\GnuWin32\bin";%PATH%
+@call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+cmake -G Ninja -DLLVM_ENABLE_PROJECTS=clang -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_ENABLE_ASSERTIONS=ON -DLLVM_INSTALL_TOOLCHAIN_ONLY=ON -DLLVM_USE_CRT_RELEASE=MT -DCMAKE_BUILD_TYPE=Release %TOP%\src\llvm
+ninja
