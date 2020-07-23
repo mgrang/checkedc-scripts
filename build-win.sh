@@ -1,7 +1,7 @@
 # In git-bash:
 cd /c/mgrang/checkedc/master
 git clone -c core.autocrlf=false https://github.com/Microsoft/checkedc-clang src
-cd src\llvm\projects
+cd src/llvm/projects/checkedc-wrapper
 git clone https://github.com/Microsoft/checkedc
 
 # In cmd prompt:
