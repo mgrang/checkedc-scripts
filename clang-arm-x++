@@ -1,8 +1,8 @@
 #!/bin/bash
 
-TRIPLE=arm-linux-gnueabihf
-GCC=/usr/local/magrang/sysroot/gcc-arm-8.3-2019.03-x86_64-$TRIPLE
-VERSION=8.3.0
+TRIPLE=arm-none-linux-gnueabihf
+GCC=/usr/magrang/sysroots/gcc-arm-10.2-2020.11-x86_64-$TRIPLE
+VERSION=10.2.1
 
 clang++ \
   -target $TRIPLE \
