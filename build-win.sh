@@ -1,10 +1,12 @@
-# In git-bash:
-cd /c/mgrang/checkedc/master
+# In cmd prompt:
+
+# Checkout.
+cd C:\mgrang\checkedc\master
 git clone -c core.autocrlf=false https://github.com/Microsoft/checkedc-clang src
-cd src/llvm/projects/checkedc-wrapper
+cd src\llvm\projects\checkedc-wrapper
 git clone https://github.com/Microsoft/checkedc
 
-# In cmd prompt:
+# Build.
 set TOP=C:\mgrang\checkedc\master
 mkdir %TOP%\build
 cd %TOP%\build
