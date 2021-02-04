@@ -1,13 +1,15 @@
 # In cmd prompt:
 
+set TOP=C:\mgrang\checkedc\master
+
 # Checkout.
-cd C:\mgrang\checkedc\master
+cd %TOP%
 git clone -c core.autocrlf=false https://github.com/Microsoft/checkedc-clang src
 cd src\llvm\projects\checkedc-wrapper
 git clone https://github.com/Microsoft/checkedc
 
 # Build.
-set TOP=C:\mgrang\checkedc\master
+cd %TOP%
 mkdir %TOP%\build
 cd %TOP%\build
 set PATH="C:\GnuWin32\bin";%PATH%
