@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Make sure to install the following before building the compiler for x86:
-# sudo apt-get install gcc-multilib g++-multilib lib32z1-dev
+# sudo apt install gcc-multilib g++-multilib lib32z1-dev
 
 PROG=${0##*/}
 
@@ -34,7 +34,8 @@ check_status(){
 
 # Set default values.
 BUILD_MODE=Release
-TARGETS_TO_BUILD="ARM;X86"
+ASSERTION_MODE=ON
+TARGETS_TO_BUILD="X86"
 
 SRC_DIR=$PWD/src
 BUILD_DIR=$PWD/build
@@ -58,16 +59,14 @@ done
 mkdir -p $BUILD_DIR/llvm && cd $BUILD_DIR/llvm
 
 cmake -G Ninja \
- -DCHECKEDC_ARM_SYSROOT="/usr/magrang/sysroots/gcc-arm-10.2-2020.11-x86_64-arm-none-linux-gnueabihf" \
- -DCHECKEDC_ARM_RUNUNDER="qemu-arm" \
  -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR \
  -DCMAKE_BUILD_TYPE=$BUILD_MODE \
- -DLLVM_ENABLE_ASSERTIONS=ON \
+ -DLLVM_ENABLE_ASSERTIONS=$ASSERTION_MODE \
  -DLLVM_TARGETS_TO_BUILD="$TARGETS_TO_BUILD" \
  -DLLVM_CCACHE_BUILD=ON \
  -DLLVM_BUILD_32_BITS=ON \
  -DLLVM_LIT_ARGS=-v \
  $SRC_DIR/llvm || check_status
 
-ninja -v -j16 || check_status
+ninja || check_status
 ninja install || check_status

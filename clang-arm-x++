@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TRIPLE=arm-none-linux-gnueabihf
-GCC=/usr/magrang/sysroots/gcc-arm-10.2-2020.11-x86_64-$TRIPLE
+GCC=/usr/magrang/sysroots/gcc-arm-10.2-2020.11-mingw-w64-i686-$TRIPLE
 VERSION=10.2.1
 
 clang++ \
